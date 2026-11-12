@@ -14,15 +14,9 @@ mcp = MCPServer("hello", instructions="Counts letters in text.")
 @mcp.tool()
 def count_letter(text: str, letter: str) -> int:
     """Count how many times a letter appears in text, ignoring case."""
-    # TODO 1: count how many times `letter` appears in `text`.
-    # Hint 1: if `letter` is not exactly one character, raise
-    #         ToolError("letter must be exactly one character.")
-    #         A ToolError is sent back to the model as a readable error
-    #         message instead of crashing the server. Use that exact
-    #         message; the tests check it.
-    # Hint 2: ignore case by lowercasing both `text` and `letter`.
-    # Hint 3: Python strings have a .count() method.
-    raise NotImplementedError("TODO 1: fill in count_letter in hello_server.py")
+    if len(letter) != 1:
+        raise ToolError("letter must be exactly one character.")
+    return text.lower().count(letter.lower())
 
 
 if __name__ == "__main__":
