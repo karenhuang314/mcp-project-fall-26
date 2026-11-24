@@ -22,6 +22,7 @@ class RedactTests(unittest.TestCase):
             ("Call 713-853-6161.", "Call [phone]."),
             ("Call 713.853.6161 or (713) 853-6161.", "Call [phone] or [phone]."),
             ("From a.b@x.com, cell 281-555-0199", "From [email], cell [phone]"),
+            ("Call 713 853 6161 or 713/853-6161.", "Call [phone] or [phone]."),
         ]:
             with self.subTest(text=text):
                 self.assertEqual(redact(text), expected)
